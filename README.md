@@ -1,3 +1,68 @@
-# Battle for Food - C++ 双人游戏（基于EasyX）
-基于EasyX的一个简单的C++双人游戏
-课设版代码，简单易懂，玩家1用WASD，玩家2上下左右，在屏幕上移动吃饮料，优先吃到20个饮料的玩家移动速度变快，体积变大，吃到30个的玩家可以启动技能发射激光（玩家1点击F，玩家2点击enter）
+# 🥤 Battle for Food - EasyX C++ Game
+
+![Language](https://img.shields.io/badge/Language-C++-blue.svg) ![Platform](https://img.shields.io/badge/Platform-Windows%20Only-lightgrey.svg) ![Library](https://img.shields.io/badge/Library-EasyX-orange.svg) ![IDE](https://img.shields.io/badge/IDE-Visual%20Studio%202022-purple.svg)
+
+## 📖 项目简介 (Introduction)
+
+**Battle for Food** 是一款基于 **C++** 和 **EasyX 图形库** 开发的本地双人竞技游戏。
+两位玩家在同一屏幕上通过争夺随机生成的饮料来强化自己，经历"变大"与"觉醒"两个阶段，最终通过激光射击决出胜负。
+
+本项目在 Visual Studio 2022 环境下开发，利用面向对象编程思想实现了角色状态管理、碰撞检测及文件读写功能。
+
+## ✨ 核心玩法与机制 (Game Mechanics)
+
+游戏分为两个阶段，节奏紧张刺激：
+
+1.  **抢夺发育阶段**：
+    * 地图上会随机刷新**饮料**。
+    * **进化 (Level 1)**：当玩家吃到 **20** 个饮料时，体型变大，大幅增加进食范围。
+    * **觉醒 (Level 2)**：当玩家吃到 **30** 个饮料时，解锁终极技能——**激光发射**。
+
+2.  **决战阶段**：
+    * 率先解锁技能的玩家可以按键发射激光。
+    * **胜利条件**：激光率先击中对手的玩家获胜。
+
+3.  **记录系统**：
+    * 游戏结束时，系统会自动将本次对局的 **KO帧数**（即比赛决出胜负的总帧数）写入本地文件，用于记录比赛数据。
+
+## 🎮 操作说明 (Controls)
+
+| 功能 | 玩家 1 (P1) | 玩家 2 (P2) |
+| :--- | :---: | :---: |
+| **移动** | `W` `A` `S` `D` | `↑` `↓` `←` `→` |
+| **攻击技能** | `F` | `Enter` (回车) |
+| **技能条件** | 需吃到 30 个饮料 | 需吃到 30 个饮料 |
+
+> **注意**：只有在达到 30 分后，攻击按键才会生效。
+
+## 🛠️ 开发环境与构建 (Environment)
+
+由于本项目使用了 EasyX 库，仅支持 Windows 操作系统。
+
+### 环境要求
+* **操作系统**：Windows 7 / 10 / 11
+* **IDE**：Visual Studio 2022 (推荐) 或 VS2019
+* **依赖库**：[EasyX Graphics Library](https://easyx.cn/) (需安装到 VS 中)
+
+### 如何运行 (How to Run)
+1.  确保电脑已安装 Visual Studio 和 EasyX 库。
+2.  克隆或下载本项目到本地。
+3.  双击打开 `.sln` 解决方案文件。
+4.  在 Visual Studio 中点击 **"本地 Windows 调试器"** (Local Windows Debugger) 即可运行。
+
+## 📂 项目结构 (Structure)
+
+```text
+本项目所有资源与代码均位于根目录下，结构说明如下：
+
+```text
+game/
+├── Battle for food.exe   # 编译后的游戏可执行文件 (直接双击即可开始游戏)
+├── main.cpp              # 游戏主程序入口 (包含主循环与核心逻辑)
+├── Rabbit.h              # 玩家角色类定义
+├── Skill.h               # 技能系统头文件 
+├── best_kos.txt          # 记录文件 (自动保存历史比赛的 KO 帧数数据)
+├── background.png        # 游戏主背景素材
+├── 1win.png              # 玩家 1 获胜时的结算图片
+├── 2win.png              # 玩家 2 获胜时的结算图片
+└── README.md             # 项目说明文档
